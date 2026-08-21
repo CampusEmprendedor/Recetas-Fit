@@ -1,91 +1,209 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recetas Fit — Campus Emprendedor</title>
-<meta name="description" content="Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender. Muy pronto en Campus Emprendedor.">
+<meta name="description" content="Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender. Sumate a la lista de espera.">
 <meta property="og:title" content="Recetas Fit — Campus Emprendedor">
 <meta property="og:description" content="Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender.">
 <meta property="og:type" content="website">
 <style>
   :root{
-    --gold:#c9a24a;
-    --gold-dark:#9c7a2e;
-    --gold-light:#f4e6c1;
-    --ink:#241a0f;
-    --ink-soft:#5a4d3c;
-    --cream:#fbf6ec;
-    --cream-alt:#f4ecd8;
-    --card:#ffffff;
-    --border:1px solid #ecdfc0;
-    --shadow:0 12px 34px rgba(36,26,15,.12);
+    --gold:#c9a24a; --gold-dark:#9c7a2e; --gold-light:#f4e6c1;
+    --ink:#241a0f; --ink-soft:#5a4d3c; --cream:#fbf6ec; --cream-alt:#f4ecd8;
+    --card:#ffffff; --border:1px solid #ecdfc0; --shadow:0 12px 34px rgba(36,26,15,.12);
+    --green:#2e8b57;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
     font-family:'Segoe UI',Arial,Helvetica,sans-serif;
-    background:radial-gradient(circle at 80% 0%, var(--gold-light) 0%, var(--cream) 55%);
+    background:var(--cream);
     color:var(--ink);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
   }
-  h1,h2{font-family:Georgia,'Times New Roman',serif;line-height:1.15;}
-  .card{
-    background:var(--card);
-    border:var(--border);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    max-width:560px;
-    width:100%;
-    padding:48px 40px;
-    text-align:center;
+  a{text-decoration:none;color:inherit;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.15;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px;}
+
+  header.hero{
+    background:radial-gradient(circle at 80% 0%, var(--gold-light) 0%, var(--cream) 60%);
+    padding:60px 0 50px;text-align:center;
   }
   .emoji{font-size:2.6rem;margin-bottom:14px;}
-  .badge{
-    display:inline-block;
-    background:var(--gold-light);
-    color:var(--gold-dark);
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    padding:6px 14px;
-    border-radius:999px;
-    margin-bottom:18px;
-  }
-  h1{font-size:2rem;color:var(--ink);margin-bottom:12px;}
+  .badge{display:inline-block;background:var(--gold-light);color:var(--gold-dark);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px;}
+  h1{font-size:clamp(2.1rem,5vw,2.8rem);color:var(--ink);margin-bottom:14px;}
   h1 span{color:var(--gold-dark);}
-  p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:8px;}
-  .footer-note{
-    margin-top:28px;
-    padding-top:22px;
-    border-top:1px solid #ecdfc0;
-    font-size:.88rem;
-    color:var(--ink-soft);
-  }
-  .footer-note a{
-    color:var(--gold-dark);
-    text-decoration:none;
-    font-weight:600;
-  }
-  .footer-note a:hover{text-decoration:underline;}
+  .hero p{color:var(--ink-soft);font-size:1.08rem;max-width:44ch;margin:0 auto 26px;}
+
+  section{padding:44px 0;border-top:1px solid #ecdfc0;}
+  h2{font-size:1.5rem;margin-bottom:8px;}
+  .lede{color:var(--ink-soft);margin-bottom:22px;max-width:56ch;}
+
+  .modulo{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
+  .modulo .n{font-family:Georgia,serif;font-weight:700;color:var(--gold-dark);font-size:1.1rem;flex-shrink:0;width:28px;}
+  .modulo h3{font-size:1.02rem;margin-bottom:4px;}
+  .modulo p{color:var(--ink-soft);font-size:.9rem;}
+  .modulo .estado{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:20px;padding:3px 10px;}
+  .estado.listo{color:var(--green);background:#e9f7ee;}
+  .estado.prox{color:var(--gold-dark);background:var(--gold-light);}
+
+  .precio-card{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:26px;text-align:center;}
+  .precio-card .valor{font-family:Georgia,serif;font-size:2.2rem;color:var(--ink);margin-bottom:4px;}
+  .precio-card .valor span{font-size:1rem;color:var(--ink-soft);font-family:inherit;}
+  .precio-card p{color:var(--ink-soft);font-size:.92rem;margin-top:8px;}
+
+  .form-card{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:26px;}
+  label{display:block;font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:6px;}
+  input{width:100%;padding:13px 14px;border-radius:10px;border:1px solid #e6d7bd;font-size:1rem;margin-bottom:16px;font-family:inherit;}
+  input:focus{outline:2px solid var(--gold);border-color:transparent;}
+  .btn{display:block;width:100%;padding:15px;border-radius:50px;font-weight:700;font-size:1rem;text-align:center;cursor:pointer;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#2a1a10;box-shadow:0 8px 20px rgba(156,122,46,.35);}
+  .btn:disabled{opacity:.6;cursor:default;}
+  .msg{font-size:.88rem;margin-top:12px;text-align:center;display:none;}
+  .msg.visible{display:block;}
+  .msg.ok{color:var(--green);}
+  .msg.error{color:#b3392f;}
+
+  footer{padding:30px 0 50px;text-align:center;font-size:.85rem;color:var(--ink-soft);}
+  footer a{color:var(--gold-dark);font-weight:600;}
 </style>
 </head>
 <body>
-  <div class="card">
+
+<header class="hero">
+  <div class="wrap">
     <div class="emoji">🍓</div>
     <div class="badge">Próximamente</div>
     <h1>Recetas <span>Fit</span></h1>
     <p>Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender.</p>
-    <p>Estamos terminando de armar este curso. Muy pronto vas a poder verlo completo, acá mismo.</p>
-    <div class="footer-note">
-      Un curso de <a href="https://campusemprendedor.com/">Campus Emprendedor</a>
+  </div>
+</header>
+
+<section id="temario">
+  <div class="wrap">
+    <h2>Qué trae el curso</h2>
+    <p class="lede">Mismo formato de Postres de Oro — recetas + bonos — pensado para que puedas seguir vendiendo lo que ya sabés hacer, ahora también a quien te dice "me encanta pero estoy cuidándome".</p>
+
+    <div class="modulo">
+      <div class="n">01</div>
+      <div>
+        <h3>Reemplazos inteligentes</h3>
+        <p>Harinas alternativas, endulzantes naturales, grasas más livianas y chocolate fit — la base técnica de todo el curso.</p>
+        <span class="estado listo">Ya disponible</span>
+      </div>
+    </div>
+    <div class="modulo">
+      <div class="n">02</div>
+      <div>
+        <h3>Clásicos reversionados</h3>
+        <p>10 recetas: brownie de batata, cheesecake sin horno, alfajores de avena, flan sin azúcar y más.</p>
+        <span class="estado prox">En producción</span>
+      </div>
+    </div>
+    <div class="modulo">
+      <div class="n">03</div>
+      <div>
+        <h3>Meriendas y snacks proteicos</h3>
+        <p>8 recetas rápidas para el consumo diario: bowls, bliss balls, barritas, panqueques proteicos.</p>
+        <span class="estado prox">En producción</span>
+      </div>
+    </div>
+    <div class="modulo">
+      <div class="n">04</div>
+      <div>
+        <h3>Postres para fechas y regalo</h3>
+        <p>6 recetas para vender por encargo: tortas, bombones, cupcakes, trufas.</p>
+        <span class="estado prox">En producción</span>
+      </div>
+    </div>
+    <div class="modulo">
+      <div class="n">+</div>
+      <div>
+        <h3>4 bonos</h3>
+        <p>Calculadora de costos y macros, plan semanal de meriendas, kit de presentación, y un mini recetario salado de regalo.</p>
+        <span class="estado prox">En producción</span>
+      </div>
     </div>
   </div>
+</section>
+
+<section id="precio">
+  <div class="wrap">
+    <h2>Precio de lanzamiento</h2>
+    <p class="lede">Quienes se anoten en la lista de espera se aseguran este precio cuando el curso se habilite — antes de que suba.</p>
+    <div class="precio-card">
+      <div class="valor">$19.999 <span>ARS</span></div>
+      <p>Mismo precio que Postres de Oro. Todavía no está abierta la compra: te avisamos por email apenas esté listo.</p>
+    </div>
+  </div>
+</section>
+
+<section id="lista-espera">
+  <div class="wrap">
+    <h2>Sumate a la lista de espera</h2>
+    <p class="lede">Dejanos tu email y sos de las primeras en enterarte cuando el curso esté disponible — sin compromiso.</p>
+    <div class="form-card">
+      <div id="msgForm" class="msg"></div>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" placeholder="Tu nombre">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="tu@email.com">
+      <button class="btn" id="btnAnotarme" onclick="anotarme()">Quiero que me avisen</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Un curso de <a href="https://campusemprendedor.com/">Campus Emprendedor</a>
+</footer>
+
+<script>
+  // Pegá acá la URL de "Implementación web" del proyecto de Apps Script
+  // "Campus Emprendedor - Motor Central" (Implementar > Gestionar
+  // implementaciones > icono de copiar junto a la implementación activa).
+  var SCRIPT_URL = "PEGA_ACA_LA_URL_DE_MOTOR_CENTRAL";
+  var CURSO_ID = "recetas-fit";
+
+  function anotarme(){
+    var nombre = document.getElementById('nombre').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var msg = document.getElementById('msgForm');
+    msg.classList.remove('visible', 'ok', 'error');
+
+    if(!email){
+      msg.textContent = 'Ingresá tu email.';
+      msg.classList.add('visible', 'error');
+      return;
+    }
+
+    var btn = document.getElementById('btnAnotarme');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+
+    fetch(SCRIPT_URL + '?action=leadMagnet', {
+      method: 'POST',
+      body: JSON.stringify({ curso: CURSO_ID, nombre: nombre, email: email })
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        btn.disabled = false; btn.textContent = 'Quiero que me avisen';
+        if(data && data.ok){
+          msg.textContent = '¡Listo! Te avisamos por email apenas esté disponible.';
+          msg.classList.add('visible', 'ok');
+          document.getElementById('nombre').value = '';
+          document.getElementById('email').value = '';
+        } else {
+          msg.textContent = 'No se pudo enviar. Probá de nuevo, o escribinos directamente.';
+          msg.classList.add('visible', 'error');
+        }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Quiero que me avisen';
+        msg.textContent = 'No se pudo conectar. Probá de nuevo en un momento.';
+        msg.classList.add('visible', 'error');
+      });
+  }
+</script>
 </body>
 </html>
