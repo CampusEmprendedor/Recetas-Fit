@@ -66,6 +66,7 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
   .tag{font-size:.72rem;background:#fff;border:1px solid #ecdfc0;border-radius:20px;padding:4px 10px;color:var(--ink-soft);}
 
+  .receta-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;margin-bottom:14px;display:block;background:var(--gold-light);}
   .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
   .badge-receta{font-size:.7rem;font-weight:700;background:var(--gold-light);color:var(--gold-dark);border-radius:20px;padding:4px 10px;}
   .clase-body ul.ingredientes{padding-left:18px;font-size:.88rem;color:var(--ink-soft);margin-bottom:4px;}
@@ -349,6 +350,9 @@
     body.className = 'clase-body';
 
     var html = '';
+    if(c.imagen){
+      html += '<img class="receta-img" src="' + escapeHtml(c.imagen) + '" alt="' + escapeHtml(it.titulo) + '" loading="lazy">';
+    }
     if(c.badges && c.badges.length){
       html += '<div class="badges">';
       c.badges.forEach(function(b){ html += '<span class="badge-receta">' + escapeHtml(b) + '</span>'; });
