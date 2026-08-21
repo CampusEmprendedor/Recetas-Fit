@@ -66,6 +66,16 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
   .tag{font-size:.72rem;background:#fff;border:1px solid #ecdfc0;border-radius:20px;padding:4px 10px;color:var(--ink-soft);}
 
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+  .badge-receta{font-size:.7rem;font-weight:700;background:var(--gold-light);color:var(--gold-dark);border-radius:20px;padding:4px 10px;}
+  .clase-body ul.ingredientes{padding-left:18px;font-size:.88rem;color:var(--ink-soft);margin-bottom:4px;}
+  .clase-body ul.ingredientes li{margin-bottom:4px;}
+  .grupo-titulo{font-weight:700;font-size:.85rem;color:var(--ink);margin:10px 0 4px;}
+  .clase-body ol.pasos{padding-left:18px;font-size:.88rem;color:var(--ink-soft);}
+  .clase-body ol.pasos li{margin-bottom:6px;}
+  .sust-box{background:#eef6ff;border:1px solid #c7dff5;border-radius:10px;padding:12px 14px;font-size:.86rem;margin-top:10px;color:var(--ink-soft);}
+  .sust-box strong{color:var(--ink);}
+
   .proximamente-list{list-style:none;padding:0;}
   .proximamente-list li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid #ecdfc0;font-size:.9rem;color:var(--ink-soft);}
   .proximamente-list li:first-child{border-top:none;}
@@ -249,8 +259,10 @@
       var lista = porModulo[m].slice().sort(function(a,b){ return (a.orden||0)-(b.orden||0); });
       var sec = document.createElement('div');
       sec.className = 'seccion';
-      sec.innerHTML = '<h2>Módulo ' + escapeHtml(m) + '</h2><p class="intro">Tocá cada clase para abrirla.</p>';
-      lista.forEach(function(it, i){ sec.appendChild(armarClase(it, i+1)); });
+      sec.innerHTML = '<h2>Módulo ' + escapeHtml(m) + '</h2><p class="intro">Tocá cada una para abrirla.</p>';
+      lista.forEach(function(it, i){
+        sec.appendChild(it.tipo === 'receta' ? armarReceta(it, i+1) : armarClase(it, i+1));
+      });
       cont.appendChild(sec);
     });
 
@@ -315,6 +327,59 @@
       html += '<h4>Dónde se usa en el curso</h4><div class="tags">';
       c.dondeAparece.forEach(function(d){ html += '<span class="tag">' + escapeHtml(d) + '</span>'; });
       html += '</div>';
+    }
+
+    body.innerHTML = html;
+    div.appendChild(body);
+    return div;
+  }
+
+  function armarReceta(it, num){
+    var c = (it.cuerpo && typeof it.cuerpo === 'object') ? it.cuerpo : {};
+    var div = document.createElement('div');
+    div.className = 'clase';
+
+    var head = document.createElement('div');
+    head.className = 'clase-head';
+    head.innerHTML = '<span class="num">' + num + '</span><h3>' + escapeHtml(it.titulo) + '</h3><span class="flecha">▾</span>';
+    head.onclick = function(){ div.classList.toggle('abierta'); };
+    div.appendChild(head);
+
+    var body = document.createElement('div');
+    body.className = 'clase-body';
+
+    var html = '';
+    if(c.badges && c.badges.length){
+      html += '<div class="badges">';
+      c.badges.forEach(function(b){ html += '<span class="badge-receta">' + escapeHtml(b) + '</span>'; });
+      html += '</div>';
+    }
+
+    if(c.ingredientes && c.ingredientes.length){
+      html += '<h4>Ingredientes</h4>';
+      c.ingredientes.forEach(function(grupo){
+        var titulo = grupo[0], items = grupo[1];
+        if(titulo) html += '<div class="grupo-titulo">' + escapeHtml(titulo) + '</div>';
+        html += '<ul class="ingredientes">' + items.map(function(i){ return '<li>' + escapeHtml(i) + '</li>'; }).join('') + '</ul>';
+      });
+    }
+
+    if(c.pasos && c.pasos.length){
+      html += '<h4>Preparación</h4><ol class="pasos">' + c.pasos.map(function(p){ return '<li>' + escapeHtml(p) + '</li>'; }).join('') + '</ol>';
+    }
+
+    if(c.tips && c.tips.length){
+      if(c.tips.length === 1){
+        html += '<div class="tip-box"><strong>Tip:</strong> ' + escapeHtml(c.tips[0]) + '</div>';
+      } else {
+        html += '<div class="tip-box"><strong>Tips:</strong><ul style="margin:6px 0 0;padding-left:18px;">' +
+          c.tips.map(function(t){ return '<li style="margin-bottom:4px;">' + escapeHtml(t) + '</li>'; }).join('') + '</ul></div>';
+      }
+    }
+
+    if(c.sustituciones && c.sustituciones.length){
+      html += '<div class="sust-box"><strong>Se puede cambiar:</strong><ul style="margin:6px 0 0;padding-left:18px;">' +
+        c.sustituciones.map(function(s){ return '<li style="margin-bottom:4px;">' + escapeHtml(s) + '</li>'; }).join('') + '</ul></div>';
     }
 
     body.innerHTML = html;
