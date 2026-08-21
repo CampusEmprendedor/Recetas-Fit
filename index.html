@@ -1,22 +1,40 @@
 
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recetas Fit — Campus Emprendedor</title>
-<meta name="description" content="Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender. Sumate a la lista de espera.">
-<meta property="og:title" content="Recetas Fit — Campus Emprendedor">
-<meta property="og:description" content="Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender.">
+<title>Campus Emprendedor — Tienda de cursos digitales</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23eaa42e'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle'%3E%F0%9F%91%91%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Campus Emprendedor: la tienda de cursos digitales para empezar a generar un ingreso extra desde casa. Acceso inmediato, 100% en español.">
 <meta property="og:type" content="website">
+<meta property="og:title" content="Campus Emprendedor — Tienda de cursos digitales">
+<meta property="og:description" content="Cursos digitales paso a paso para generar un ingreso extra desde casa. Acceso inmediato, 100% en español.">
+<meta property="og:url" content="https://campusemprendedor.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Campus Emprendedor — Tienda de cursos digitales">
+<meta name="twitter:description" content="Cursos digitales paso a paso para generar un ingreso extra desde casa.">
 <style>
   :root{
-    --gold:#c9a24a; --gold-dark:#9c7a2e; --gold-light:#f4e6c1;
-    --ink:#241a0f; --ink-soft:#5a4d3c; --cream:#fbf6ec; --cream-alt:#f4ecd8;
-    --card:#ffffff; --border:1px solid #ecdfc0; --shadow:0 12px 34px rgba(36,26,15,.12);
-    --green:#2e8b57;
+    --gold:#c9a24a;
+    --gold-dark:#9c7a2e;
+    --gold-light:#f4e6c1;
+    --ink:#241a0f;
+    --ink-soft:#5a4d3c;
+    --cream:#fbf6ec;
+    --cream-alt:#f4ecd8;
+    --card:#ffffff;
+    --green:#1f8a4c;
+    --gray:#8a7d68;
+    --cta:#c9a24a;
+    --cta-dark:#9c7a2e;
+    --radius:18px;
+    --shadow:0 12px 34px rgba(36,26,15,.12);
+    --border:1px solid #ecdfc0;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
     font-family:'Segoe UI',Arial,Helvetica,sans-serif;
     background:var(--cream);
@@ -24,186 +42,432 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
+  img,svg{max-width:100%;display:block;}
+  .container{max-width:1120px;margin:0 auto;padding:0 22px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.2;}
   a{text-decoration:none;color:inherit;}
-  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.15;}
-  .wrap{max-width:720px;margin:0 auto;padding:0 20px;}
+  ul{list-style:none;}
 
-  header.hero{
-    background:radial-gradient(circle at 80% 0%, var(--gold-light) 0%, var(--cream) 60%);
-    padding:60px 0 50px;text-align:center;
+  .ce-logo{
+    background-image:url("data:image/jpeg;base64,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");
+    background-size:cover;
+    background-position:center;
+    border-radius:50%;
+    flex-shrink:0;
   }
-  .emoji{font-size:2.6rem;margin-bottom:14px;}
-  .badge{display:inline-block;background:var(--gold-light);color:var(--gold-dark);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px;}
-  h1{font-size:clamp(2.1rem,5vw,2.8rem);color:var(--ink);margin-bottom:14px;}
-  h1 span{color:var(--gold-dark);}
-  .hero p{color:var(--ink-soft);font-size:1.08rem;max-width:44ch;margin:0 auto 26px;}
 
-  section{padding:44px 0;border-top:1px solid #ecdfc0;}
-  h2{font-size:1.5rem;margin-bottom:8px;}
-  .lede{color:var(--ink-soft);margin-bottom:22px;max-width:56ch;}
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:.98rem;
+    text-align:center;
+    cursor:pointer;
+    border:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--cta),var(--cta-dark));
+    color:#fff;
+    box-shadow:0 10px 24px rgba(156,122,46,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(156,122,46,.45);}
+  .btn-outline{
+    background:transparent;
+    color:var(--gold-dark);
+    border:1.5px solid var(--gold-dark);
+  }
+  .btn-outline:hover{background:var(--gold-light);}
+  .btn-disabled{
+    background:#efe6cf;
+    color:var(--gray);
+    cursor:not-allowed;
+  }
 
-  .modulo{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
-  .modulo .n{font-family:Georgia,serif;font-weight:700;color:var(--gold-dark);font-size:1.1rem;flex-shrink:0;width:28px;}
-  .modulo h3{font-size:1.02rem;margin-bottom:4px;}
-  .modulo p{color:var(--ink-soft);font-size:.9rem;}
-  .modulo .estado{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:20px;padding:3px 10px;}
-  .estado.listo{color:var(--green);background:#e9f7ee;}
-  .estado.prox{color:var(--gold-dark);background:var(--gold-light);}
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,246,236,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:var(--border);
+    padding:14px 0;
+  }
+  header .container{display:flex;justify-content:space-between;align-items:center;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .ce-logo{width:44px;height:44px;box-shadow:0 2px 8px rgba(36,26,15,.25);}
+  .brand-name{font-family:Georgia,serif;font-weight:700;font-size:1.15rem;color:var(--ink);letter-spacing:.2px;}
+  .brand-name small{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:400;font-size:.68rem;color:var(--gold-dark);letter-spacing:1.5px;text-transform:uppercase;}
+  nav.top-links{display:flex;align-items:center;gap:22px;}
+  nav.top-links a.navlink{font-size:.88rem;font-weight:600;color:var(--ink-soft);}
+  nav.top-links a.navlink:hover{color:var(--gold-dark);}
 
-  .precio-card{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:26px;text-align:center;}
-  .precio-card .valor{font-family:Georgia,serif;font-size:2.2rem;color:var(--ink);margin-bottom:4px;}
-  .precio-card .valor span{font-size:1rem;color:var(--ink-soft);font-family:inherit;}
-  .precio-card p{color:var(--ink-soft);font-size:.92rem;margin-top:8px;}
+  /* ---------- Hero ---------- */
+  .hero{
+    background:radial-gradient(circle at 80% 0%, var(--gold-light) 0%, var(--cream) 55%);
+    padding:76px 0 64px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-emblem{
+    width:120px;height:120px;margin:0 auto 22px;
+    box-shadow:0 8px 26px rgba(36,26,15,.25);
+    border:3px solid #fff;
+  }
+  .badge{
+    display:inline-block;background:var(--gold-light);color:var(--gold-dark);
+    font-size:.76rem;font-weight:700;padding:7px 16px;border-radius:30px;margin-bottom:20px;
+    letter-spacing:.4px;text-transform:uppercase;
+  }
+  .hero h1{font-size:2.7rem;color:var(--ink);margin:0 auto 18px;max-width:780px;}
+  .hero h1 span{color:var(--gold-dark);}
+  .hero p.sub{font-size:1.15rem;color:var(--ink-soft);margin:0 auto 32px;max-width:600px;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .hero-stats{
+    display:flex;justify-content:center;gap:46px;margin-top:52px;flex-wrap:wrap;
+  }
+  .hero-stats div{text-align:center;}
+  .hero-stats strong{display:block;font-family:Georgia,serif;font-size:1.6rem;color:var(--ink);}
+  .hero-stats span{font-size:.8rem;color:var(--gray);letter-spacing:.3px;}
 
-  .form-card{background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--shadow);padding:26px;}
-  label{display:block;font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:6px;}
-  input{width:100%;padding:13px 14px;border-radius:10px;border:1px solid #e6d7bd;font-size:1rem;margin-bottom:16px;font-family:inherit;}
-  input:focus{outline:2px solid var(--gold);border-color:transparent;}
-  .btn{display:block;width:100%;padding:15px;border-radius:50px;font-weight:700;font-size:1rem;text-align:center;cursor:pointer;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#2a1a10;box-shadow:0 8px 20px rgba(156,122,46,.35);}
-  .btn:disabled{opacity:.6;cursor:default;}
-  .msg{font-size:.88rem;margin-top:12px;text-align:center;display:none;}
-  .msg.visible{display:block;}
-  .msg.ok{color:var(--green);}
-  .msg.error{color:#b3392f;}
+  /* ---------- Secciones ---------- */
+  section{padding:66px 0;}
+  .section-alt{background:var(--cream-alt);}
+  h2.section-title{
+    font-size:2.1rem;text-align:center;color:var(--ink);margin-bottom:14px;
+  }
+  p.section-sub{text-align:center;color:var(--gray);max-width:640px;margin:0 auto 44px;font-size:1.05rem;}
 
-  footer{padding:30px 0 50px;text-align:center;font-size:.85rem;color:var(--ink-soft);}
-  footer a{color:var(--gold-dark);font-weight:600;}
+  /* ---------- Tienda / catálogo ---------- */
+  .courses-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;
+  }
+  .course-card{
+    background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;border:var(--border);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .course-card.available:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(36,26,15,.18);}
+  .course-card .thumb{
+    width:100%;height:190px;object-fit:cover;background:var(--gold-light);
+  }
+  .course-card .thumb-placeholder{
+    width:100%;height:190px;display:flex;align-items:center;justify-content:center;
+    background:var(--gold-light);font-size:2.6rem;color:var(--gold-dark);
+  }
+  .course-card-body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .course-card-body h3{font-size:1.25rem;color:var(--ink);}
+  .course-card-body p{color:var(--gray);font-size:.92rem;flex:1;}
+  .course-tag{
+    display:inline-block;font-size:.7rem;font-weight:700;padding:4px 11px;border-radius:20px;
+    letter-spacing:.4px;align-self:flex-start;text-transform:uppercase;
+  }
+  .tag-live{background:#e5f6ec;color:var(--green);}
+  .tag-soon{background:#f1e9d4;color:var(--gray);}
+  .course-price{font-weight:700;color:var(--ink);font-size:1.05rem;}
+  .course-price .old{color:var(--gray);text-decoration:line-through;font-weight:400;font-size:.85rem;margin-right:8px;}
+  .course-card-body .btn{margin-top:6px;width:100%;}
+
+  /* ---------- Por qué Campus Emprendedor ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;}
+  .why-item{
+    background:var(--card);border-radius:var(--radius);padding:26px;text-align:center;
+    border:var(--border);box-shadow:var(--shadow);
+  }
+  .why-item .icon{font-size:2rem;margin-bottom:12px;}
+  .why-item h3{font-size:1.05rem;margin-bottom:8px;color:var(--ink);}
+  .why-item p{color:var(--gray);font-size:.9rem;}
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:linear-gradient(135deg,var(--ink) 0%, #3a2c18 100%);
+    color:#fff;text-align:center;border-radius:var(--radius);
+    padding:56px 30px;margin:0 auto;max-width:900px;
+  }
+  .cta-final h2{color:#fff;margin-bottom:14px;font-size:1.9rem;}
+  .cta-final p{color:#e6dcc4;max-width:520px;margin:0 auto 28px;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:44px 0 30px;text-align:center;color:var(--gray);font-size:.85rem;
+    border-top:var(--border);
+  }
+  footer .brand{justify-content:center;margin-bottom:14px;}
+  footer .brand .ce-logo{width:34px;height:34px;}
+  footer .brand-name{font-size:1rem;}
+  footer p{margin-bottom:6px;}
+  footer .foot-links{display:flex;gap:18px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+  footer .foot-links a{color:var(--ink-soft);font-weight:600;}
+  footer .foot-links a:hover{color:var(--gold-dark);}
+
+  @media (max-width:600px){
+    .hero h1{font-size:2.1rem;}
+    nav.top-links{display:none;}
+  }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="emoji">🍓</div>
-    <div class="badge">Próximamente</div>
-    <h1>Recetas <span>Fit</span></h1>
-    <p>Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender.</p>
+<header>
+  <div class="container">
+    <div class="brand">
+      <div class="ce-logo"></div>
+      <div class="brand-name">Campus Emprendedor<small>Tienda de cursos</small></div>
+    </div>
+    <nav class="top-links">
+      <a href="#tienda" class="navlink">Cursos</a>
+      <a href="#por-que" class="navlink">Por qué elegirnos</a>
+    </nav>
+    <a href="#tienda" class="btn btn-primary">Ver cursos</a>
   </div>
 </header>
 
-<section id="temario">
-  <div class="wrap">
-    <h2>Qué trae el curso</h2>
-    <p class="lede">Mismo formato de Postres de Oro — recetas + bonos — pensado para que puedas seguir vendiendo lo que ya sabés hacer, ahora también a quien te dice "me encanta pero estoy cuidándome".</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="ce-logo hero-emblem"></div>
+    <span class="badge">Cursos digitales · 100% en español</span>
+    <h1>Tu <span>tienda de cursos</span> para generar un ingreso extra desde casa</h1>
+    <p class="sub">Campus Emprendedor reúne cursos prácticos y accionables, pensados para quien nunca vendió nada antes. Comprás, accedés al instante y empezás hoy.</p>
+    <div class="hero-ctas">
+      <a href="#tienda" class="btn btn-primary">Explorar cursos</a>
+      <a href="#por-que" class="btn btn-outline">Por qué elegirnos</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong id="statCursos">1</strong><span>Curso publicado</span></div>
+      <div><strong>100%</strong><span>Acceso digital</span></div>
+      <div><strong>+1.200</strong><span>Alumnos en la comunidad</span></div>
+    </div>
+  </div>
+</section>
 
-    <div class="modulo">
-      <div class="n">01</div>
-      <div>
-        <h3>Reemplazos inteligentes</h3>
-        <p>Harinas alternativas, endulzantes naturales, grasas más livianas y chocolate fit — la base técnica de todo el curso.</p>
-        <span class="estado listo">Ya disponible</span>
+<!-- TIENDA -->
+<section id="tienda">
+  <div class="container">
+    <h2 class="section-title">Nuestros cursos</h2>
+    <p class="section-sub">Elegí un curso y arrancá ahora mismo. Cada uno incluye material descargable y acceso a tu cuenta apenas se confirma el pago.</p>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section id="por-que" class="section-alt">
+  <div class="container">
+    <h2 class="section-title">Por qué elegir Campus Emprendedor</h2>
+    <p class="section-sub">Cada curso de la tienda sigue los mismos estándares, así sabés qué esperar antes de comprar.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="icon">⚡</div>
+        <h3>Acceso inmediato</h3>
+        <p>Apenas se confirma el pago, entrás a tu cuenta y descargás todo el material.</p>
       </div>
-    </div>
-    <div class="modulo">
-      <div class="n">02</div>
-      <div>
-        <h3>Clásicos reversionados</h3>
-        <p>10 recetas: brownie de batata, cheesecake sin horno, alfajores de avena, flan sin azúcar y más.</p>
-        <span class="estado prox">En producción</span>
+      <div class="why-item">
+        <div class="icon">🧭</div>
+        <h3>Paso a paso</h3>
+        <p>Contenido pensado para arrancar de cero, sin conocimientos previos.</p>
       </div>
-    </div>
-    <div class="modulo">
-      <div class="n">03</div>
-      <div>
-        <h3>Meriendas y snacks proteicos</h3>
-        <p>8 recetas rápidas para el consumo diario: bowls, bliss balls, barritas, panqueques proteicos.</p>
-        <span class="estado prox">En producción</span>
+      <div class="why-item">
+        <div class="icon">🔒</div>
+        <h3>Pago seguro</h3>
+        <p>Comprás con la misma confianza que en cualquier tienda online reconocida.</p>
       </div>
-    </div>
-    <div class="modulo">
-      <div class="n">04</div>
-      <div>
-        <h3>Postres para fechas y regalo</h3>
-        <p>6 recetas para vender por encargo: tortas, bombones, cupcakes, trufas.</p>
-        <span class="estado prox">En producción</span>
-      </div>
-    </div>
-    <div class="modulo">
-      <div class="n">+</div>
-      <div>
-        <h3>4 bonos</h3>
-        <p>Calculadora de costos y macros, plan semanal de meriendas, kit de presentación, y un mini recetario salado de regalo.</p>
-        <span class="estado prox">En producción</span>
+      <div class="why-item">
+        <div class="icon">🇦🇷</div>
+        <h3>100% en español</h3>
+        <p>Todo el contenido está pensado y escrito en español, sin traducciones.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="precio">
-  <div class="wrap">
-    <h2>Precio de lanzamiento</h2>
-    <p class="lede">Quienes se anoten en la lista de espera se aseguran este precio cuando el curso se habilite — antes de que suba.</p>
-    <div class="precio-card">
-      <div class="valor">$19.999 <span>ARS</span></div>
-      <p>Mismo precio que Postres de Oro. Todavía no está abierta la compra: te avisamos por email apenas esté listo.</p>
-    </div>
-  </div>
-</section>
-
-<section id="lista-espera">
-  <div class="wrap">
-    <h2>Sumate a la lista de espera</h2>
-    <p class="lede">Dejanos tu email y sos de las primeras en enterarte cuando el curso esté disponible — sin compromiso.</p>
-    <div class="form-card">
-      <div id="msgForm" class="msg"></div>
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" placeholder="Tu nombre">
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="tu@email.com">
-      <button class="btn" id="btnAnotarme" onclick="anotarme()">Quiero que me avisen</button>
+<!-- CTA FINAL -->
+<section>
+  <div class="container">
+    <div class="cta-final">
+      <h2>Elegí tu curso y arrancá hoy</h2>
+      <p>Nuevos cursos se suman todo el tiempo a la tienda de Campus Emprendedor.</p>
+      <a href="#tienda" class="btn btn-primary">Ver cursos disponibles</a>
     </div>
   </div>
 </section>
 
 <footer>
-  Un curso de <a href="https://campusemprendedor.com/">Campus Emprendedor</a>
+  <div class="container">
+    <div class="brand">
+      <div class="ce-logo"></div>
+      <div class="brand-name">Campus Emprendedor</div>
+    </div>
+    <p>Campus Emprendedor reúne cursos digitales educativos. Los resultados dependen del esfuerzo y las condiciones de cada persona.</p>
+    <p>© 2026 Campus Emprendedor. Todos los derechos reservados.</p>
+    <div class="foot-links">
+      <a href="#tienda">Cursos</a>
+      <a href="#por-que">Por qué elegirnos</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // Pegá acá la URL de "Implementación web" del proyecto de Apps Script
-  // "Campus Emprendedor - Motor Central" (Implementar > Gestionar
-  // implementaciones > icono de copiar junto a la implementación activa).
-  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxt9rHpDPi4dtmSL6kAFmOhWqRB2BHTZR3cdI5h1wxy-Qs_w6VmPgI6liqlyYx42Hh/exec";
-  var CURSO_ID = "recetas-fit";
-
-  function anotarme(){
-    var nombre = document.getElementById('nombre').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var msg = document.getElementById('msgForm');
-    msg.classList.remove('visible', 'ok', 'error');
-
-    if(!email){
-      msg.textContent = 'Ingresá tu email.';
-      msg.classList.add('visible', 'error');
-      return;
+  /* ---------------------------------------------------------------
+     CATÁLOGO DE CURSOS
+     Para sumar un curso nuevo, agregá un objeto al array de abajo.
+     - id:      identificador corto (no se usa aún, sirve de referencia)
+     - emoji:   ícono si todavía no hay imagen del curso
+     - img:     ruta a la imagen de portada (ej: "/Postres-de-Oro/og-image.jpg")
+     - title:   nombre del curso, con emoji si querés
+     - desc:    descripción corta (1-2 líneas)
+     - tag:     "live" (disponible) o "soon" (próximamente)
+     - link:    URL del curso (ruta del repo, ej: "/Postres-de-Oro/")
+     - priceNow / priceOld: opcional, para mostrar precio
+  --------------------------------------------------------------- */
+  const cursos = [
+    {
+      id: "postres-de-oro",
+      img: "/Postres-de-Oro/og-image.jpg",
+      title: "🍰 Postres de Oro",
+      desc: "32 recetas de postres fáciles y rentables para vender desde casa, con guía de precios y bonos de regalo.",
+      tag: "live",
+      link: "/Postres-de-Oro/",
+      priceNow: "$17.999 ARS",
+      priceOld: "$45.500 ARS"
+    },
+    {
+      id: "recetas-fit",
+      img: "/Recetas-Fit/img/portada.jpg",
+      emoji: "🍓",
+      title: "Recetas Fit",
+      desc: "Las mismas recetas dulces que ya amás, en versión fit: sin azúcar, sin culpa, y listas para vender.",
+      tag: "soon",
+      link: null
     }
+  ];
 
-    var btn = document.getElementById('btnAnotarme');
-    btn.disabled = true; btn.textContent = 'Enviando...';
+  const grid = document.getElementById("coursesGrid");
 
-    fetch(SCRIPT_URL + '?action=leadMagnet', {
-      method: 'POST',
-      body: JSON.stringify({ curso: CURSO_ID, nombre: nombre, email: email })
-    })
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        btn.disabled = false; btn.textContent = 'Quiero que me avisen';
-        if(data && data.ok){
-          msg.textContent = '¡Listo! Te avisamos por email apenas esté disponible.';
-          msg.classList.add('visible', 'ok');
-          document.getElementById('nombre').value = '';
-          document.getElementById('email').value = '';
-        } else {
-          msg.textContent = 'No se pudo enviar. Probá de nuevo, o escribinos directamente.';
-          msg.classList.add('visible', 'error');
-        }
-      })
-      .catch(function(){
-        btn.disabled = false; btn.textContent = 'Quiero que me avisen';
-        msg.textContent = 'No se pudo conectar. Probá de nuevo en un momento.';
-        msg.classList.add('visible', 'error');
-      });
-  }
+  cursos.forEach(curso => {
+    const isLive = curso.tag === "live";
+    const card = document.createElement("div");
+    card.className = "course-card" + (isLive ? " available" : "");
+
+    const media = curso.img
+      ? `<img class="thumb" src="${curso.img}" alt="${curso.title}">`
+      : `<div class="thumb-placeholder">${curso.emoji || "📚"}</div>`;
+
+    const tagHtml = isLive
+      ? `<span class="course-tag tag-live">Disponible</span>`
+      : `<span class="course-tag tag-soon">Próximamente</span>`;
+
+    const priceHtml = (isLive && curso.priceNow)
+      ? `<div class="course-price">${curso.priceOld ? `<span class="old">${curso.priceOld}</span>` : ""}${curso.priceNow}</div>`
+      : "";
+
+    const ctaHtml = isLive
+      ? `<a href="${curso.link}" class="btn btn-primary">Ver curso</a>`
+      : `<span class="btn btn-disabled">Disponible pronto</span>`;
+
+    card.innerHTML = `
+      ${media}
+      <div class="course-card-body">
+        ${tagHtml}
+        <h3>${curso.title}</h3>
+        <p>${curso.desc}</p>
+        ${priceHtml}
+        ${ctaHtml}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  document.getElementById("statCursos").textContent =
+    cursos.filter(c => c.tag === "live").length;
 </script>
+
 </body>
 </html>
